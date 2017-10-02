@@ -17,23 +17,22 @@ import java.nio.ByteBuffer;
 import com.amazonaws.util.IOUtils;
 
 public class Celebrities {
-
-	public List<String> findCelebrity() {
-		String photo = "input.jpg";
-		ByteBuffer imageBytes = null;
-		
-		try {
-			InputStream inputStream = new FileInputStream(new File(photo));
-			imageBytes = ByteBuffer.wrap(IOUtils.toByteArray(inputStream));
-		} catch (Exception e) {
-			System.out.println("Failed to load file " + photo);
-			System.exit(1);
-		}
-		
-		AmazonRekognition amazonRekognition = AmazonRekognitionClientBuilder
-				.standard()
-				.withRegion(Regions.US_WEST_2)
-				.build();
+  public List<String> findCelebrity() {
+    String photo = "input.jpg";
+    ByteBuffer imageBytes = null;
+    
+    try {
+      InputStream inputStream = new FileInputStream(new File(photo));
+      imageBytes = ByteBuffer.wrap(IOUtils.toByteArray(inputStream));
+    } catch (Exception e) {
+      System.out.println("Failed to load file " + photo);
+      System.exit(1);
+    }
+    
+    AmazonRekognition amazonRekognition = AmazonRekognitionClientBuilder
+        .standard()
+        .withRegion(Regions.US_WEST_2)
+        .build();
 				
     RecognizeCelebritiesRequest request = new RecognizeCelebritiesRequest()
     		.withImage(new Image().withBytes(imageBytes));
@@ -80,5 +79,5 @@ public class Celebrities {
     metadata.add(result.getUnrecognizedFaces().size() + " face(s) were unrecognized.");
      
     return metadata;
-	}
+  }
 }
