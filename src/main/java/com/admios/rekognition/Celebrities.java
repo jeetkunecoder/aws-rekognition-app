@@ -57,12 +57,8 @@ public class Celebrities {
       
        // Position
        BoundingBox boundingBox = celebrity.getFace().getBoundingBox();
-       System.out.println("position: " +
-         boundingBox.getLeft().toString() + " " +
-         boundingBox.getTop().toString());
-       metadata.add("position: " +
-         boundingBox.getLeft().toString() + " " +
-         boundingBox.getTop().toString());
+       System.out.println("position: " + boundingBox.getLeft().toString() + " " + boundingBox.getTop().toString());
+       metadata.add("position: " + boundingBox.getLeft().toString() + " " + boundingBox.getTop().toString());
       
        // Extra info
        System.out.println("Further information (if available):");
